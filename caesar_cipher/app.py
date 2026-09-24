@@ -79,12 +79,6 @@ def game_challenge(level):
 def index():
     return render_template("game.html", active_page="game")
 
-
-@app.route("/game")
-def game_page():
-    return render_template("game.html", active_page="game")
-
-
 @app.route("/encryption")
 def encryption_page():
     return render_template("encryption.html", active_page="encryption")
@@ -98,6 +92,13 @@ def decryption_page():
 @app.route("/bruteforce")
 def bruteforce_page():
     return render_template("bruteforce.html", active_page="bruteforce")
+    
+@app.route("/game")
+def game_page():
+    return render_template("game.html", active_page="game")
+
+
+
 
 
 @app.post("/api/encrypt")
