@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% set active_page = 'bruteforce' %}
+{% block title %}Brute Force — Caesar{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="page-hero-copy">
+        <p class="eyebrow">03 / BRUTE FORCE</p>
+        <h1>Try every <em>door.</em><span>.</span></h1>
+        <p class="lead">No key? Test every possible Caesar decryption and inspect the complete 26-key space.</p>
+    </div>
+    <div class="hero-side"><strong>26</strong><span>tests in<br>one pass</span></div>
+</section>
+
+<section class="workspace brute-workspace">
+    <div class="workspace-heading">
+        <p class="eyebrow">ANALYSIS WORKSPACE</p>
+        <h2>Explore every possible shift.</h2>
+    </div>
+
+    <div class="brute-layout">
+        <article class="brute-input-card">
+            <div class="card-top"><span>CIPHERTEXT</span><span id="attack-status" class="status"><i></i> WAITING</span></div>
+            <label for="attack-message">Message to test</label>
+            <textarea id="attack-message" class="cipher-input" placeholder="Paste ciphertext to test all 26 keys..."></textarea>
+            <div class="keyspace-note"><strong>26</strong><span>possible keys<br>generated instantly</span></div>
+            <button id="attack-run" class="primary-action" type="button"><span>Run brute force</span><span>↗</span></button>
+        </article>
+
+        <article class="results-card">
+            <div class="card-top"><span>ALL DECRYPTIONS</span><span>KEY 00 — 25</span></div>
+            <div id="brute-results" class="brute-results">
+                <div class="empty-results"><span>26</span><p>All possible decryptions will appear here.</p></div>
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

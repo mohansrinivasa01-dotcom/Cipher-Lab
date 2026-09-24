@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active_page = 'encryption' %}
+{% block title %}Encryption — Caesar{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="page-hero-copy">
+        <p class="eyebrow">01 / ENCRYPTION</p>
+        <h1>Make it <em>secret.</em><span>.</span></h1>
+        <p class="lead">Transform readable text into ciphertext by shifting every letter through the alphabet.</p>
+    </div>
+    <div class="hero-side"><strong>26</strong><span>possible<br>keys</span></div>
+</section>
+
+<section class="workspace">
+    <div class="workspace-heading">
+        <p class="eyebrow">ENCRYPTION WORKSPACE</p>
+        <h2>Shift your message forward.</h2>
+    </div>
+
+    <div class="tool-layout">
+        <article class="editor-card">
+            <div class="card-top"><span>MESSAGE</span><span class="status"><i></i> READY</span></div>
+            <label for="encrypt-message">Your message</label>
+            <textarea id="encrypt-message" class="cipher-input" placeholder="Write something worth hiding..."></textarea>
+            <div class="control-row">
+                <div class="key-control">
+                    <label for="encrypt-key">Shift key</label>
+                    <div class="key-stepper">
+                        <button type="button" data-target="encrypt-key" data-step="-1">−</button>
+                        <input id="encrypt-key" type="number" min="0" max="25" value="3">
+                        <button type="button" data-target="encrypt-key" data-step="1">+</button>
+                    </div>
+                </div>
+                <div class="alphabet-note"><span>A</span><i></i><span>D</span></div>
+            </div>
+            <button id="encrypt-run" class="primary-action" type="button"><span>Encrypt message</span><span>↗</span></button>
+        </article>
+
+        <article class="output-card">
+            <div class="card-top"><span>RESULT</span><button class="copy-button" data-copy="encrypt-result" type="button">COPY</button></div>
+            <div id="encrypt-result" class="output-text muted-output">Your encrypted message will appear here.</div>
+            <div class="output-foot"><span>CAESAR SHIFT</span><strong id="encrypt-key-readout">KEY 03</strong></div>
+        </article>
+    </div>
+</section>
+{% endblock %}

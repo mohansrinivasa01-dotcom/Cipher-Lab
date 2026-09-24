@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% set active_page = 'game' %}
+{% block title %}Play — Caesar Cipher{% endblock %}
+{% block content %}
+<section class="game-hero">
+    <div>
+        <p class="eyebrow">04 / CRYPTO QUEST</p>
+        <h1>Steal the<br><em>cipher.</em><span>!</span></h1>
+        <p class="lead">A story-driven Caesar Cipher mission. Crack transmissions, collect intel, survive the vault, and master the shift before the countdown reaches zero.</p>
+    </div>
+    <div class="game-badge"><strong>5</strong><span>levels<br>to escape</span></div>
+</section>
+
+<section class="game-shell">
+    <div class="game-stats">
+        <div><span>LEVEL</span><strong id="game-level">01</strong></div>
+        <div><span>XP / INTEL</span><strong id="game-xp">000</strong></div>
+        <div><span>COMBO</span><strong id="game-streak">00</strong></div>
+        <div><span>LIVES</span><strong id="game-lives">♥♥♥</strong></div>
+        <div class="timer-stat"><span>MISSION TIME</span><strong><span id="game-timer">30</span>s</strong></div>
+    </div>
+    <div class="progress-track"><span id="game-progress"></span></div>
+    <div class="mission-map" id="mission-map">
+        <div class="map-label"><span>MISSION MAP</span><small>Reach the vault at Level 5</small></div>
+        <div class="map-nodes" id="map-nodes"></div>
+    </div>
+
+    <div id="game-start" class="game-panel intro-panel">
+        <div class="panel-kicker">MISSION BRIEFING / OPERATION RED KEY</div>
+        <h2>Crack the vault. Learn the cipher.</h2>
+        <p>You are Agent 26. A secret archive has been locked behind ten cipher zones. Each level gets richer, but also gives you <strong>more time to think</strong>. Build combos, spend intel on hints, and reach the final vault.</p>
+        <div class="how-grid">
+            <article><b>01 / SIGNAL</b><h3>Decode</h3><p>Intercept a transmission and move letters backward to reveal it.</p></article>
+            <article><b>02 / TRACE</b><h3>Find the key</h3><p>Compare the alphabets and identify exactly how far the signal moved.</p></article>
+            <article><b>03 / FORGE</b><h3>Encrypt</h3><p>Forge your own ciphertext before the security system notices.</p></article>
+        </div>
+        <div class="briefing-line"><span>TIME GROWS WITH EVERY LEVEL</span><span>23s → 43s</span></div>
+        <button id="start-game" class="primary-action" type="button"><span>Enter the mission</span><span>↗</span></button>
+    </div>
+
+    <div id="game-play" class="game-panel challenge-panel hidden">
+        <div class="challenge-top"><div><span class="panel-kicker" id="challenge-type">DECODE THE MESSAGE</span><h2 id="challenge-question">---</h2><p id="challenge-subtext">---</p></div><div class="round-stack"><div class="round-chip">ROUND <span id="game-round">01</span></div><div class="zone-chip" id="zone-chip">ZONE 01 · SIGNAL</div><div class="round-chip timer-near-question">TIME <span id="game-timer-near">23</span>s</div></div></div>
+        <div class="mission-objective" id="mission-objective"><span>OBJECTIVE</span><strong id="objective-text">Intercept the message.</strong></div>
+        <div id="choice-area" class="choice-grid"></div>
+        <div id="text-answer-area" class="text-answer hidden"><label for="game-answer">Your ciphertext</label><input id="game-answer" autocomplete="off" spellcheck="false" placeholder="Type your answer..."><button id="submit-text-answer" class="primary-action" type="button"><span>Submit answer</span><span>↗</span></button></div>
+        <div class="hint-row"><button id="hint-button" type="button">? HINT <span id="hint-cost">10 XP</span></button><button id="boost-button" type="button">+ TIME <span>15 XP</span></button><span id="hint-text"></span></div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+    </div>
+
+    <div id="game-over" class="game-panel result-panel hidden">
+        <div class="panel-kicker">MISSION DEBRIEF</div>
+        <h2 id="game-over-title">Nice run.</h2>
+        <p id="game-over-copy">You trained your cipher skills.</p>
+        <div class="final-score"><span>FINAL XP</span><strong id="final-xp">000</strong></div>
+        <div class="final-grid"><div><span>ROUNDS</span><strong id="final-rounds">0</strong></div><div><span>BEST COMBO</span><strong id="final-streak">0</strong></div><div><span>ACCURACY</span><strong id="final-accuracy">0%</strong></div></div>
+        <div class="vault-card" id="vault-card"><span>VAULT STATUS</span><strong id="vault-status">LOCKED</strong><p id="vault-copy">Reach Level 5 to become a Cipher Master.</p></div>
+        <div class="result-actions"><button id="play-again" class="primary-action" type="button"><span>Play again</span><span>↗</span></button><a class="secondary-action" href="{{ url_for('encryption_page') }}">Practice encryption →</a></div>
+    </div>
+
+    <div class="learn-strip"><div><span>CHEAT SHEET</span><strong>A → D means key 3</strong></div><p>Forward shift = encryption. Backward shift = decryption. There are only 26 possible keys, so brute force can test them all.</p><a href="{{ url_for('bruteforce_page') }}">See all 26 keys →</a></div>
+</section>
+{% endblock %}

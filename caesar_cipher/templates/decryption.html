@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% set active_page = 'decryption' %}
+{% block title %}Decryption — Caesar{% endblock %}
+{% block content %}
+<section class="page-hero">
+    <div class="page-hero-copy">
+        <p class="eyebrow">02 / DECRYPTION</p>
+        <h1>Bring it <em>back.</em><span>.</span></h1>
+        <p class="lead">Reverse a Caesar shift and recover the original message when the encryption key is known.</p>
+    </div>
+    <div class="hero-side"><strong>−</strong><span>reverse<br>the shift</span></div>
+</section>
+
+<section class="workspace">
+    <div class="workspace-heading">
+        <p class="eyebrow">DECRYPTION WORKSPACE</p>
+        <h2>Turn ciphertext into meaning.</h2>
+    </div>
+
+    <div class="tool-layout">
+        <article class="editor-card">
+            <div class="card-top"><span>CIPHERTEXT</span><span class="status"><i></i> READY</span></div>
+            <label for="decrypt-message">Encrypted message</label>
+            <textarea id="decrypt-message" class="cipher-input" placeholder="Paste your ciphertext here..."></textarea>
+            <div class="control-row">
+                <div class="key-control">
+                    <label for="decrypt-key">Shift key</label>
+                    <div class="key-stepper">
+                        <button type="button" data-target="decrypt-key" data-step="-1">−</button>
+                        <input id="decrypt-key" type="number" min="0" max="25" value="3">
+                        <button type="button" data-target="decrypt-key" data-step="1">+</button>
+                    </div>
+                </div>
+                <div class="alphabet-note"><span>D</span><i></i><span>A</span></div>
+            </div>
+            <button id="decrypt-run" class="primary-action" type="button"><span>Decrypt message</span><span>↗</span></button>
+        </article>
+
+        <article class="output-card">
+            <div class="card-top"><span>RECOVERED TEXT</span><button class="copy-button" data-copy="decrypt-result" type="button">COPY</button></div>
+            <div id="decrypt-result" class="output-text muted-output">Your decrypted message will appear here.</div>
+            <div class="output-foot"><span>REVERSE SHIFT</span><strong id="decrypt-key-readout">KEY 03</strong></div>
+        </article>
+    </div>
+</section>
+{% endblock %}
