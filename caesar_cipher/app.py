@@ -77,7 +77,7 @@ def game_challenge(level):
 
 @app.route("/")
 def index():
-    return render_template("game.html", active_page="game")
+    return render_template("encryption.html", active_page="encryption")
 
 @app.route("/encryption")
 def encryption_page():
